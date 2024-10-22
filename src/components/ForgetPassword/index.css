@@ -1,0 +1,121 @@
+.forget-password-bg-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.forgetpassword-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.forgetpassword-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.forgetpassword-msg{
+    font-family: Roboto;
+}
+
+.forgetpassword-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-label1 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Roboto;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.api-error-message {
+    color: red;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.submit-button {
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+}
+
+.submit-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (min-width:320px) and (max-width: 350px) {
+    .forgetpassword-container {
+        max-width: 260px;
+    }
+    .forgetpassword-title{
+        font-size: 25px!important;
+    }
+
+    .forgetpassword-msg{
+        font-size: 18px;
+        text-align: center;
+    }
+}
+@media (max-width: 600px) {
+    .forgetpassword-container {
+        padding: 1rem;
+    }
+
+    .forgetpassword-title {
+        font-size: 1.25rem;
+    }
+
+    .form-input {
+        padding: 0.65rem;
+    }
+
+    .submit-button {
+        padding: 0.65rem;
+        font-size: 0.9rem;
+    }
+}

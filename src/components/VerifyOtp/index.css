@@ -1,0 +1,109 @@
+.otp-bg-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.otp-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.otp-input {
+    height: 40px;
+    width: 40px;
+    font-size: 24px;
+    text-align: center;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.verify-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.verifyOtp-button {
+    background-color: rgb(13, 81, 228);
+    color: #ffffff;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.otp-error-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: red;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+
+@media (max-width: 600px) {
+    .otp-input {
+        height: 35px;
+        width: 35px;
+        font-size: 20px;
+        margin: 8px;
+    }
+
+    .verifyOtp-button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .otp-error-container {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .otp-input {
+        height: 45px;
+        width: 45px;
+        font-size: 26px;
+        margin: 12px;
+    }
+
+    .verifyOtp-button {
+        padding: 12px 24px;
+        font-size: 20px;
+    }
+
+    .otp-error-container {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .otp-input {
+        height: 50px;
+        width: 50px;
+        font-size: 28px;
+        margin: 15px;
+    }
+
+    .verifyOtp-button {
+        padding: 15px 30px;
+        font-size: 22px;
+    }
+
+    .otp-error-container {
+        font-size: 18px;
+    }
+}
+

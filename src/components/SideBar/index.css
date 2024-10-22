@@ -1,0 +1,29 @@
+.sidebar-bg-container{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+.sidebar-sub-container{
+    display: flex;
+    margin: 10px;
+    margin-bottom: -10px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    padding-left: 10px;
+    height: 40px;
+    width: 95%;
+    /* border: solid red; */
+}
+.activepath-styling{
+    background-color: rgba(0, 166, 255, 0.169);
+    width: 95%;
+    color : rgb(216, 13, 156);
+}
+.dashboard-icon{
+    margin-right: 5px;
+    font-size: 25px;
+}
+.text{
+    font-size: 20px;
+}

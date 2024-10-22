@@ -1,0 +1,368 @@
+.my-account-container {
+  padding: 20px;
+  /* max-width: 600px; */
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.my-account-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  margin-top: 0px;
+}
+
+.my-account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  
+}
+
+.form-input,
+.form-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: -5px;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0px;
+}
+
+.row .form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.row .form-group:last-child {
+  margin-right: 0;
+}
+
+.submit-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.update-success-message {
+  margin-top: 20px;
+  color: green;
+  text-align: center;
+}
+
+.my-account-container {
+  width: 90%;
+  padding: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button-group .active-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.profile-edit-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-right {
+  flex: 2;
+  padding-left: 20px;
+}
+
+.image-upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-label {
+  cursor: pointer;
+  text-align: center;
+}
+
+.upload-placeholder {
+  color: #888;
+  font-size: 14px;
+}
+
+.update-success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
+
+/*new css */
+
+.my-account-container {
+  padding: 20px;
+  /* border: solid red; */
+  max-width: 75vw;
+  min-height: 82vh;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+.active-button {
+  background-color: goldenrod;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.active-button:focus {
+  outline: none;
+}
+
+.inactive-button {
+  background-color: #f0f0f0;
+  color: #000;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.profile-upload-section {
+  width: 35vw;
+}
+
+.profile-edit-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-preview-text {
+  font-weight: bold;
+  margin-bottom: 0px;
+  text-align: left;
+  width: 100%;
+  color: #000;
+}
+
+.image-preview-container {
+  margin: 20px 0;
+}
+
+.profile-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.input-file {
+  width: 180px;
+}
+
+.my-account-form {
+  width: 100%;
+}
+
+.submit-button {
+  background-color: #0d51e4;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.update-success-message {
+  margin-top: 20px;
+  color: green;
+}
+
+.dropdown-style {
+  height: 44px;
+}
+
+.section-title {
+  color: black;
+}
+
+.image-preview-text {
+  color: black;
+}
+
+.image-controls-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icons {
+  cursor: pointer;
+}
+
+.dark-theme {
+  background-color: #000;
+  color: #ffffff !important;
+}
+.disabled{
+  color: #ffffff;
+}
+
+.edit-profile-buttons-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.check-icon{
+  margin-right: 8px;
+  font-size: 15px;
+}
+.check-button{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 0px;
+}
+
+@media (max-width : 767px) {
+    .edit-profile-buttons-container{
+      width: 80vw;
+      /* border: solid green; */
+      margin-left: -18px;
+    }
+    .profile-edit-section{
+      flex-direction: column;
+    }
+    .section-title{
+      width: 80vw;
+    }
+    .image-upload-section{
+      width: 80vw;
+      margin-bottom: 20px;
+    }
+    .button-container{
+      font-size: 15px;
+    }
+    .dropdown-style{
+      height: 41px;
+      width: 80vw;
+    }
+    .row{
+      flex-direction: column;
+    }
+    .form-input{
+      width: 80vw !important;
+    }
+}
+
+@media (max-width : 420px) {
+  .my-account-container{
+    max-width: 85%;
+  }
+  .button-container{
+    width: 100%;
+    /* border: solid red; */
+    flex-direction: column;
+  }
+  .active-button{
+    margin-bottom: 10px;
+  }
+  .inactive-button{
+    margin-bottom: 10px;
+  }
+  .edit-profile-buttons-container{
+    justify-content: flex-end;
+    font-size: 15px;
+    width: 95%;
+    margin-left: -5px;
+  }
+}

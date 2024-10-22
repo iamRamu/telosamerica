@@ -1,0 +1,101 @@
+.registration-bg-container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:black;
+}
+.registration-form{
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: 0px 4px 16px 0px #bfbfbf; */
+    padding: 20px;
+    /* height: 50vh; */
+    width: 30vw;
+    font-family: Roboto;
+    border-radius: 20px;
+    background-color: rgb(193, 205, 19);
+    background-image: linear-gradient(to bottom,#0049B7 , #51d0de);
+    color: #ffffff;
+}
+.registration-form-heading{
+    text-align: center;
+}
+.user-full-name-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.first-name-container{
+    width: 48%;
+    /* border: solid green; */
+}
+.last-name-container{
+    width: 48%;
+    /* border: solid red; */
+}
+.register-input-first-name{
+    width: 95%;
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+    font-family: Roboto;
+}
+.register-input-last-name{
+    width: 95%;
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+    font-family: Roboto;
+}
+.register-input{
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 15px;
+    outline: none;
+    font-family: Roboto;
+}
+.signup-button{
+    margin-top: 10px;
+    background-color: #116ed8;
+    color: #ffffff;
+}
+.sigin-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.error-message{
+    color: rgb(255, 0, 144);
+    font-weight: bold;
+}
+
+@media (min-width : 320px) and (max-width : 500px) {
+    .registration-form{
+        width: 80%;
+    }
+}
+
+@media (min-width : 501px) and (max-width : 600px) {
+    .registration-form{
+        width: 70%;
+    }
+}
+
+@media (min-width : 601px) and (max-width : 800px) {
+    .registration-form{
+        width: 50%;
+    }
+}
+
+@media (min-width : 801px) and (max-width : 1050px) {
+    .registration-form{
+        width: 40%;
+    }
+}
+
+@media (min-width : 1024px) and (max-width : 1200px) {
+    .registration-form{
+        width: 42%;
+    }
+}
