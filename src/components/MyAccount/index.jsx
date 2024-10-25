@@ -11,18 +11,18 @@ import { FaCheck } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaCircleXmark } from "react-icons/fa6";
 import { store } from '../../App';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 const MyAccount = () => {
-    const [profileImage, setProfileImage] = useState(null);
     const [activeTab, setActiveTab] = useState('viewProfile');
     const [userProfileData, setUserProfileData] = useState(null)
     const [imageFile, setImageFile] = useState(null)
     const token = Cookies.get('jwt_token');
+    
     const [defaultImage] = useState('https://t3.ftcdn.net/jpg/05/69/30/42/360_F_569304262_RGVohUth9wyR5Msa3CoR4XFvMYE8VG1k.jpg')
-    const { isDarkMode } = useContext(store)
+    const { isDarkMode, profileImage, setProfileImage, count, setCount } = useContext(store)
     const navigate = useNavigate()
-
+    console.log("count", count)
     const [imageControls, setImageControls] = useState(false)
 
     const handleImageChange = event => {
@@ -53,15 +53,19 @@ const MyAccount = () => {
                     }
                 })
                 if(response.status){
+                    console.log('profile update response', response)
                     Swal.fire({
                         icon : "success",
-                        title : "Image Upload Successfully.",
+                        title : `${response.data.msg}`,
                         toast : true,
                         position : 'top-end',
                         timer : 2000,
                         timerProgressBar : true,
                         showConfirmButton : false
                     })
+                    setCount(count+1)
+                    await fetchUserData();
+                    navigate('/')
                 }
                 setImageControls(false)
             } catch (error) {
@@ -119,6 +123,7 @@ const MyAccount = () => {
             email: '',
             phone: '',
             primaryAddress: '',
+            secondaryAddress : '',
             city: '',
             state: '',
             zipCode: '',
@@ -129,6 +134,15 @@ const MyAccount = () => {
             profileImage: ''
         },
         onSubmit: async (values) => {
+            const reminderValue = values.notificationFrequency === "Daily" 
+            ? 0 
+            : values.notificationFrequency === "Weekly" 
+            ? 1 
+            : values.notificationFrequency === "Bi-Weekly" 
+            ? 2 
+            : values.notificationFrequency === "Monthly" ? 3 : null; 
+
+        const updatedValues = { ...values, reminder: reminderValue };
             Swal.fire({
                 title: 'Are you sure?',
                 icon: 'warning',
@@ -143,7 +157,7 @@ const MyAccount = () => {
                         const baseUrl = import.meta.env.VITE_BASE_URL;
                         const apiUrl = `${baseUrl}user`;
 
-                        const response = await axios.put(apiUrl, values, {
+                        const response = await axios.put(apiUrl, updatedValues, {
                             headers: {
                                 Authorization: `${token}`,
                                 'Content-Type': 'application/json',
@@ -162,6 +176,8 @@ const MyAccount = () => {
                                 background: '#ffffff',
                                 width: '400px',
                             })
+                            await fetchUserData()
+                            navigate('/')
                         }
                     } catch (error) {
                         console.log('Update error:', error);
@@ -211,10 +227,11 @@ const MyAccount = () => {
                 email: userData.email || '',
                 phone: userData.phone || '',
                 primaryAddress: userData.primaryAddress || '',
+                secondaryAddress : userData.secondaryAddress || '',
                 city: userData.city || '',
                 state: userData.state || '',
                 zipCode: userData.zipCode || '',
-                notificationFrequency: userData.notificationFrequency || '',
+                notificationFrequency: userData.reminder === 0 ? "Daily" : userData.reminder === 1 ? "Weekly" : userData.reminder === 2 ? "Bi-Weekly" : userData.reminder === 3 ? "Monthly" : null || "",
                 reminder: userData.reminder || '',
                 role: userData.role || '',
                 otherRole: userData.otherRole || '',
@@ -227,7 +244,7 @@ const MyAccount = () => {
 
     useEffect(() => {
         fetchUserData();
-    }, [token]);
+    }, [token, ]);
 
     const handleButton = () => {
         setActiveTab('editProfile')
@@ -281,7 +298,7 @@ const MyAccount = () => {
                     <form onSubmit={formik.handleSubmit} className="my-account-form" autoComplete="off">
                         <div className={isDarkMode ? 'row dark-theme' : "row"}>
                             <div className="form-group">
-                                <label htmlFor="firstName" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>First Name</label>
+                                <label htmlFor="firstName" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>First Name <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="firstName"
                                     name="firstName"
@@ -292,7 +309,7 @@ const MyAccount = () => {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="lastName" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Last Name</label>
+                                <label htmlFor="lastName" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Last Name <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="lastName"
                                     name="lastName"
@@ -306,7 +323,7 @@ const MyAccount = () => {
 
                         <div className="row">
                             <div className="form-group">
-                                <label htmlFor="email" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Email</label>
+                                <label htmlFor="email" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Email <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="email"
                                     name="email"
@@ -319,7 +336,7 @@ const MyAccount = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="phone" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Phone</label>
+                                <label htmlFor="phone" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Phone <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="phone"
                                     name="phone"
@@ -332,7 +349,7 @@ const MyAccount = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="primaryAddress" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Primary Address</label>
+                            <label htmlFor="primaryAddress" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Primary Address <span style={{color:"red"}}>*</span></label>
                             <input
                                 id="primaryAddress"
                                 name="primaryAddress"
@@ -342,9 +359,22 @@ const MyAccount = () => {
                                 placeholder='Primary Address'
                             />
                         </div>
+
+                        <div className="form-group">
+                            <label htmlFor="primaryAddress" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Secondary Address</label>
+                            <input
+                                id="secondaryAddress"
+                                name="secondaryAddress"
+                                type="text"
+                                className="form-input"
+                                {...formik.getFieldProps('secondaryAddress')}
+                                placeholder='Secondary Address'
+                            />
+                        </div>
+
                         <div className="row">
                             <div className="form-group">
-                                <label htmlFor="city" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>City</label>
+                                <label htmlFor="city" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>City <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="city"
                                     name="city"
@@ -356,7 +386,7 @@ const MyAccount = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="state" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>State</label>
+                                <label htmlFor="state" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>State <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="state"
                                     name="state"
@@ -368,7 +398,7 @@ const MyAccount = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="zipCode" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Zip Code</label>
+                                <label htmlFor="zipCode" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Zip Code <span style={{color:"red"}}>*</span></label>
                                 <input
                                     id="zipCode"
                                     name="zipCode"
@@ -391,11 +421,12 @@ const MyAccount = () => {
                                 >
                                     <option value="Daily">Daily</option>
                                     <option value="Weekly">Weekly</option>
+                                    <option value="Bi-Weekly">Bi-Weekly</option>
                                     <option value="Monthly">Monthly</option>
                                 </select>
                             </div>
 
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label htmlFor="reminder" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Reminder</label>
                                 <input
                                     id="reminder"
@@ -405,11 +436,11 @@ const MyAccount = () => {
                                     {...formik.getFieldProps('reminder')}
                                     placeholder='Number'
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="role" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Role</label>
+                            <label htmlFor="role" className={isDarkMode ? 'form-label dark-theme' : "form-label"}>Role <span style={{color:"red"}}>*</span></label>
                             <input
                                 id="role"
                                 name="role"

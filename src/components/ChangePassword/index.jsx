@@ -105,7 +105,7 @@ const ChangePassword = () => {
             <h2 className="change-password-title">Change Password</h2>
             <form onSubmit={formik.handleSubmit} className="change-password-form" autoComplete="off">
                 <div className="form-group">
-                    <label htmlFor="email" className="form-label">Email</label>
+                    <label htmlFor="email" className="form-label">Email <span style={{color:"red"}}>*</span></label>
                     <input
                         id="email"
                         name="email"
@@ -117,7 +117,7 @@ const ChangePassword = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="password" className="form-label">New Password</label>
+                    <label htmlFor="password" className="form-label">New Password <span style={{color:"red"}}>*</span></label>
                     <div className="password-container">
                         <input
                             id="password"
@@ -137,7 +137,7 @@ const ChangePassword = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                    <label htmlFor="confirmPassword" className="form-label">Confirm Password <span style={{color:"red"}}>*</span></label>
                     <div className="password-container">
                         <input
                             id="confirmPassword"

@@ -10,8 +10,9 @@ import { store } from '../../App'
 const Home = () => {
     const [userDetails, setUserDetails] = useState(null)
     const [isSidebarAvailable, setIsSidebarAvailable] = useState(false)
-    const {isDarkMode} = useContext(store)
+    const {isDarkMode, count} = useContext(store)
     const token = Cookies.get('jwt_token')
+
 
     const getUser = async () => {
         const baseUrl = import.meta.env.VITE_BASE_URL
@@ -28,7 +29,7 @@ const Home = () => {
             // console.log("response", response)
             // console.log("data", data)
             if (response.status) {
-                setUserDetails(data)
+                setUserDetails({...data})
             }
 
         } catch (error) {
@@ -49,7 +50,7 @@ const Home = () => {
         return () => {
             window.removeEventListener('resize', handleResize)
         }
-    }, [isSidebarAvailable])
+    }, [isSidebarAvailable, count])
 
     const toggleSidebar = () => {
         setIsSidebarAvailable(!isSidebarAvailable)
@@ -65,7 +66,7 @@ const Home = () => {
             </div>
             <div className='home-page-sidebar-main-content-container'>
                 <div className={`sidebar-container ${isSidebarAvailable && 'sidebar-active'}`}>
-                    {isSidebarAvailable && <SideBar />}  
+                    {isSidebarAvailable && <SideBar toggleSidebar={toggleSidebar}/>}  
                 </div>
                 <div className={isSidebarAvailable ? 'main-content-container' : 'main-content-container-full-width'}>
                     <Outlet />

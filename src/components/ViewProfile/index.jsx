@@ -16,19 +16,19 @@ const ViewProfile = props => {
                     </div>
                     <div className='viewProfile-user-data-container'>
                         <div className='viewProfile-user-details-container'>
-                            <label>Full Name</label>
+                            <label>Full Name <span style={{color:"red"}}>*</span></label>
                             <input value={`${userProfileData.firstName} ${userProfileData.lastName}`} disabled className={isDarkMode ? 'view-profile-input disabled' : 'view-profile-input'} />
                         </div>
                         <div className='viewProfile-user-details-container'>
-                            <label>Email</label>
+                            <label>Email <span style={{color:"red"}}>*</span></label>
                             <input value={`${userProfileData.email}`} disabled className={isDarkMode ? 'view-profile-input disabled' : 'view-profile-input'} />
                         </div>
                         <div className='viewProfile-user-details-container'>
-                            <label>Phone</label>
+                            <label>Phone <span style={{color:"red"}}>*</span></label>
                             <input value={`${userProfileData.phone}`} disabled className={isDarkMode ? 'view-profile-input disabled' : 'view-profile-input'} />
                         </div>
                         <div className='viewProfile-user-details-container'>
-                            <label>Primary Address</label>
+                            <label>Primary Address <span style={{color:"red"}}>*</span></label>
                             <input value={`${userProfileData ? userProfileData.primaryAddress : ''}`} disabled className={isDarkMode ? 'view-profile-input disabled' : 'view-profile-input'} />
                         </div>
                         <div className='view-profile-button-container'>

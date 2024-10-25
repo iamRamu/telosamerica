@@ -8,7 +8,7 @@ import NotFound from './components/NotFound'
 import SetPassword from './components/SetPassword'
 import Dashboard from './components/Dashboard'
 import Courses from './components/Courses'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import MyAccount from './components/MyAccount'
 //import ChangePassword from './components/ChangePassword'
 import ForgetPassword from './components/ForgetPassword'
@@ -16,8 +16,11 @@ export const store = createContext([])
 const App = () => {
   const [sidebarActivePath, setSidebarActivePath] = useState(window.location.pathname)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [profileImage, setProfileImage] = useState(null);
+  const [count, setCount] = useState(0)
+ 
   return (
-    <store.Provider value={{ sidebarActivePath, setSidebarActivePath, isDarkMode, setIsDarkMode }}>
+    <store.Provider value={{ sidebarActivePath, setSidebarActivePath, isDarkMode, setIsDarkMode, profileImage, setProfileImage, count, setCount}}>
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<LogIn />} />

@@ -16,7 +16,8 @@ const sidebarMenu = [
         displayText: "Courses"
     }
 ]
-const SideBar = () => {
+const SideBar = props => {
+    const {toggleSidebar} = props
     const { sidebarActivePath, setSidebarActivePath } = useContext(store)
     const navigate = useNavigate()
     const location = useLocation()
@@ -24,6 +25,7 @@ const SideBar = () => {
     const handleSidebaritem = path => {
         // setSidebarActivePath(path)
         navigate(path)
+        toggleSidebar()
     }
     useEffect(() => {
         setSidebarActivePath(location.pathname)

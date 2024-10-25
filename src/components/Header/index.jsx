@@ -33,7 +33,7 @@ const Header = props => {
         return () => {
             window.removeEventListener('resize', handleResize); 
         };
-    }, [isDarkMode, setIsDarkMode, webPage,, profileImage]);
+    }, [isDarkMode, setIsDarkMode, webPage, profileImage]); 
 
     const handleDropdownClick = () => {
         setDropdownOpen(prev => !prev);
